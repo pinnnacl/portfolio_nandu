@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Engineer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="intro">
+            <h1>Hello, I'm Nandu</h1>
+            <p>Experienced DevOps Engineer with expertise in CI/CD, cloud infrastructure, and automation.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+            <p>I am a meticulous and committed professional with 3 years of experience as an Operations Engineer at 6D Technologies. Following a 6-month career break, during which I completed an intensive DevOps training program with StarAgile, I am now transitioning into a DevOps Engineer role. My experience and training have provided me with a strong skill set in Kubernetes, Jenkins, Ansible, Docker, Git, GitHub, AWS, SonarQube, Nexus, and CI/CD processes.</p>
+            <ul>
+                <li><strong>Skills:</strong> Jenkins, Docker, Kubernetes, Terraform, Ansible, AWS, etc.</li>
+                <li><strong>Education:</strong> [Your educational background]</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-list">
+            <!-- Repeat this block for each project -->
+            <div class="project-item">
+                <h3>Finance Me - Kubernetes Project</h3>
+                <p>Developed an automated CI/CD pipeline where code changes on GitHub 
+triggered build, test, package, and containerize steps. Provisioned and 
+configured test servers with Terraform and Ansible, deployed applications in a 
+Kubernetes cluster, and automated production deployment. Implemented 
+continuous monitoring with Prometheus and Grafana for server metrics.</p>
+                <a href="project_1.html">View</a>
+            </div>
+            <!-- End of project block -->
+        </div>
+			<div class="project-item">
+                <h3>Medicure - GitOps project</h3>
+                <p> Developed a GitOps architecture to enforce no manual interventions, where 
+code changes are exclusively managed through Git. The project features two 
+branches: one for infrastructure management and the other for application 
+testing, building, and deployment on EKS. Utilized GitHub Actions for 
+seamless continuous integration and deployment.</p>
+                <a href="[Link to GitHub or project demo]" target="_blank">View</a>
+            </div>
+            <!-- End of project block -->
+        </div>
+    </section>
+
+    <section id="resume">
+        <h2>Resume</h2>
+        <a href="resume.pdf" download>Download My Resume</a>
+    </section>
+
+    <section id="blog">
+        <h2>Blog</h2>
+        <p>[Links or summaries of your blog posts related to DevOps practices.]</p>
+    </section>
+
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <blockquote>
+            <p>[Testimonial from a colleague or manager.]</p>
+            <footer>— [Name, Position]</footer>
+        </blockquote>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/nandu-sathyan-396284160/">Visit my LinkedIn Profile</a>
+			<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+            <a href="https://github.com/yourprofile" target="_blank">GitHub</a>
+            <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li>AWS Certified DevOps Engineer</li>
+            <li>Kubernetes Administrator</li>
+            <!-- Add more certifications as needed -->
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 [Your Name]. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

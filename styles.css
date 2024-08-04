@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    margin: 10px;
+}
+
+.intro {
+    text-align: center;
+    padding: 50px;
+}
+
+.profile-pic {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Same as width to maintain square shape */
+    object-fit: cover; /* Ensures the image covers the area */
+    border: 2px solid #ddd; /* Optional: adds a border around the image */
+    /* Remove the border-radius to make it square */
+}
+
+
+
+
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 10px 0 5px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.social-media a {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+
+#about {
+    padding: 20px;
+    margin: 10px;
+    background-color: #565557; /* Change this to your desired background color */
+    border-radius: 8px; /* Optional: adds rounded corners */
+}
+
+.linkedin-badge {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.linkedin-badge {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.badge-base {
+    display: inline-block;
+}
+
+#about {
+    color: #fff; /* White text color */
+}
+
+#about h2 {
+    color: #fff; /* White color for headings */
+}
+
+#about p {
+    color: #fff; /* White color for paragraphs */
+}
+
+#about ul {
+    color: #fff; /* White color for list items */
+}
+
+#about ul li {
+    color: #fff; /* White color for list items */
+}
+
