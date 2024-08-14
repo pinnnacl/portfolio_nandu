@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project_1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About Me</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#resume">Resume</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>	
+            </ul>
+        </nav>
+    </header>
+
+    <section id="project">
+        <div class="Medicure">
+            <h1>Finance Me</h1>
+            
+            <div class="project-details">
+                <h2> Medicure - GitOps project</h2>
+                <p>Medicure is a super specialty hospital based in New York, USA and provide world class 
+                    treatment and surgery including Heart, Liver, Kidney transplants and first robotic surgery 
+                    center. The chain is owned and managed by Global Health Limited. </p>
+				<p>The Medicure would centrally like to manage all the doctor’s and patient’s data across the 
+                    Medicure hospitals in various cities. They have developed an microservice, which offers these 
+                    services. In order to reduce unnecessary maintenance cost and manual labor, they would like to 
+                    automate their application build and deployment process using DevOps. They are fine to use 
+                    any one of the (AWS, Azure, GCP) cloud platform as their primary cloud service provider. </p>
+                <p>The company aims to deliver product updates to production frequently while maintaining high quality and reliability. Changes to applications must be made exclusively through Git, with restrictions on manual interventions. The company seeks to enhance software delivery speed and quality, and to reduce feedback time between developers and testers. To achieve this, they plan to utilize Kubernetes for managing container deployments, including scaling and descaling operations.</p>
+
+                <h2>Technologies Used</h2>
+                <ul>
+                    <li>Git - For version control for tracking changes in the code files</li>
+                    <li>Maven – For Continuous Build </li>
+                    <li>GitHub Actions - For continuous integration and continuous deployment </li>
+					<li>Docker - For deploying containerized applications </li>
+					<li>Ansible - Configuration management tools </li>
+					<li>Terraform - For creation of infrastructure.</li>
+					<li>EKS - For application deployments</li>
+                </ul>
+
+                <h2>My Role</h2>
+                <p>This project involves using two repositories: one for managing infrastructure with Terraform and the other for source code integration and deployment. Manual interventions are limited to Git SCM.
+
+                    When a developer pushes updates to the GitHub master branch, a GitHub Actions pipeline is triggered. This pipeline handles code checkout, compilation, testing, packaging, and containerization. A new test cluster is then automatically provisioned and configured with the necessary software. Once the test cluster is healthy and available, the application is automatically deployed to the test server using Kubernetes.<br><br>
+                    
+                    The deployment is tested using a test automation tool, and if successful, the application is deployed to the production server/cluster via Kubernetes. All processes are automated and triggered by a push to the GitHub master branch. The Kubernetes cluster must consist of at least two servers and be continuously monitored with Prometheus, with visualizations displayed on a Grafana dashboard.</p>
+
+				<p><strong>Project architecture:</strong></p>
+				<img src="img/img41.jpg" alt="Project Image" style="display: block; margin: 0 auto;">
+                <p><strong>Terraform workflow:</strong><br>Write a terraform code that will create VPC and EKS using terraform modules</p>
+                <img src="img/img42.jpg" alt="Project Image" style="display: block; margin: 0 auto;">
+				<p>Create github action workflow</p>
+				
+                <h2>Project Link</h2>		
+                <a href="[Link to project demo or repository]" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 [Your Name]. All rights reserved.</p>
+    </footer>
+</body>
+</html>
