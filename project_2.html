@@ -212,7 +212,7 @@ and reducing feedback time between developers and testers.</p>
                     <strong>SonarQube</strong> t2.medium 8Gb RAM
                     <strong>Nexus3</strong> t2.medium 8Gb RAM</p><br>
                 <h3>Setup Jenkins server</h3><br>
-                <p>Install Java as a dependency<br>Visit <a href="https://www.jenkins.io/doc" target="_blank">www.jenkins.io</a> to install Jenkins<br></p>
+                <p>Install Java as a dependency<br>Visit <a href="https://www.jenkins.io/doc" target="_blank" style="color: #ff5733; font-weight: bold; text-decoration: none; background-color: #e0e0e0; padding: 5px 10px; border-radius: 5px;">www.jenkins.io</a> to install Jenkins<br></p>
             </div>
             <div class="code-container">
                 <pre><code>
@@ -250,6 +250,16 @@ and reducing feedback time between developers and testers.</p>
                <strong>Configure PostgreSQL:</strong> Create a database and user for SonarQube.<br>
                <strong>Download SonarQube:</strong> Get SonarQube from the official website and extract it.<br>
                <strong>Configure SonarQube:</strong> Update sonar.properties with your database details.<br>
-               <strong>Start SonarQube:</strong> Navigate to the SonarQube directory and start the service.<br>
-                </p>
+               <strong>Start SonarQube:</strong> Navigate to the SonarQube directory and start the service.<br><br>
+                Visit the <a href="https://github.com/pinnnacl/Installation_guide/blob/main/SonarQube_setup" target="_blank" style="color: #ff5733; font-weight: bold; text-decoration: none; background-color: #e0e0e0; padding: 5px 10px; border-radius: 5px;">LINK</a>
+                to get installtion procedure <br>
+                <img src="assets/images/project/img_p2_2.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br>
+                <h3>Setup Nexus server</h3><br>
+                <strong>Install Java:</strong> Ensure Java is installed (sudo apt-get install openjdk-11-jdk).<br>
+               <strong>Create Nexus User: </strong> Create a new user (sudo adduser nexus) and grant permissions.<br>
+               <strong>Configure Nexus:</strong> Edit the Nexus configuration file to specify the installation directory:<br>
+               <strong>Start Nexus: </strong> sudo -u nexus /opt/nexus-latest/bin/nexus start<br>
+               <strong>Access Nexus Repository Manager</strong> Open a web browser and navigate to http://your-server-ip:8081. You should see the Nexus Repository Manager web interface.<br><br>
+
+            </p>
             </div>
