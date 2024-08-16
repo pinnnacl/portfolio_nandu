@@ -210,8 +210,9 @@ and reducing feedback time between developers and testers.</p>
                 <p>Create an EC2 instance with below properties<br>
                     <strong>Jenkins</strong> t2.medium 8Gb RAM<br>
                     <strong>SonarQube</strong> t2.medium 8Gb RAM
-                    <strong>Nexus3</strong> t2.medium 8Gb RAM</p>
-                <h3>Setup Jenkins server</h3>
+                    <strong>Nexus3</strong> t2.medium 8Gb RAM</p><br>
+                <h3>Setup Jenkins server</h3><br>
+                <p>Install Java as a dependency<br>Visit <a href="https://www.jenkins.io/doc" target="_blank">www.jenkins.io</a> to install Jenkins<br></p>
             </div>
             <div class="code-container">
                 <pre><code>
@@ -230,4 +231,25 @@ and reducing feedback time between developers and testers.</p>
                     
   sudo apt-get install jenkins -y
                 </code></pre>
+            </div>
+            <div class="project-description"></div>
+            <img src="assets/images/project/img_p2_1.jpg" alt="Project Image" style="display: block; margin: 0;">
+<br>
+            <p>install git, maven & docker</p>
+            <div class="code-container">
+                <pre><code>
+  sudo apt install git
+
+  sudo apt install maven
+                    
+  sudo apt install docker.io   
+                </code></pre>
+            </div>
+            <h3>Setup SonarQube server</h3><br>
+            <p><strong>Install Prerequisites:</strong> Update packages and install OpenJDK 17 and PostgreSQL.<br>
+               <strong>Configure PostgreSQL:</strong> Create a database and user for SonarQube.<br>
+               <strong>Download SonarQube:</strong> Get SonarQube from the official website and extract it.<br>
+               <strong>Configure SonarQube:</strong> Update sonar.properties with your database details.<br>
+               <strong>Start SonarQube:</strong> Navigate to the SonarQube directory and start the service.<br>
+                </p>
             </div>
