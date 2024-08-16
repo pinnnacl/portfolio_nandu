@@ -271,5 +271,29 @@ and reducing feedback time between developers and testers.</p>
             <strong>Install Jenkins Plugin -</strong> SonarQube Scanner<br>
             <strong>Global configuration -</strong> Dashboard --> Manage Jenkins --> System<br>
             <strong>Add Token </strong><br>Get token from sonar, go to My account --> Security -->enter token name and generate token <br> In Jenkins add authorization token kind -Secret text, give any id and discription<br>
+            <img src="assets/images/project/img_p2_6.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            Write pipeline stage for SonarQube as shown blow<br>
+            <div class="code-container">
+                <pre><code>
+stage('Sonar Analysis') {
+    environment {
+        scannerHome = tool 'sonar4.7'
+    }
+    steps {
+        withSonarQubeEnv('sonar') {
+            sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
+            -Dsonar.projectName=vprofile \
+            -Dsonar.projectVersion=1.0 \
+            -Dsonar.sources=src/ \
+            -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
+            -Dsonar.junit.reportsPath=target/surefire-reports/ \
+            -Dsonar.jacoco.reportsPath=target/jacoco.exec \
+            -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+        }
+    }
+}
+                </code></pre>
+            </div>
+
             </p>
             </div>
