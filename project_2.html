@@ -77,6 +77,12 @@
             margin-top: 20px;
         }
 
+        h3 {
+            color: #555;
+            font-size: 1.6em;
+            margin-top: 20px;
+        }
+
         p {
             color: #666;
             font-size: 1.1em;
@@ -96,6 +102,30 @@
         .project-description {
             margin-bottom: 20px;
         }
+
+        .code-container {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    width: fit-content;
+    margin-left: 0;
+    
+}
+
+pre {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.1;
+    overflow: auto;
+    text-align: left;
+}
+
+code {
+    font-family: Consolas, 'Courier New', monospace;
+    color: #333;
+    display: block;
+}
+
     </style>
 
 </head>
@@ -180,3 +210,24 @@ and reducing feedback time between developers and testers.</p>
                 <p>Create an EC2 instance with below properties<br>
                     <strong>Jenkins</strong> t2.medium 8Gb RAM<br>
                     <strong>SonarQube</strong> t2.medium 8Gb RAM
+                    <strong>Nexus3</strong> t2.medium 8Gb RAM</p>
+                <h3>Setup Jenkins server</h3>
+            </div>
+            <div class="code-container">
+                <pre><code>
+  sudo apt update
+
+  sudo apt install openjdk-17-jre -y
+                    
+  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+                    
+  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+    
+  sudo apt-get update
+                    
+  sudo apt-get install jenkins -y
+                </code></pre>
+            </div>
