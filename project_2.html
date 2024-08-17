@@ -108,7 +108,10 @@
     border-radius: 5px;
     padding: 20px;
     width: fit-content;
-    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
     
 }
 
@@ -125,6 +128,9 @@ code {
     color: #333;
     display: block;
 }
+
+
+
 
     </style>
 
@@ -233,16 +239,16 @@ and reducing feedback time between developers and testers.</p>
                 </code></pre>
             </div>
             <div class="project-description"></div>
-            <img src="assets/images/project/img_p2_1.jpg" alt="Project Image" style="display: block; margin: 0;">
+            <img src="assets/images/project/img_p2_1.jpg" alt="Project Image" style="display: block; margin: auto;">
 <br>
             <p>install git, maven & docker</p>
             <div class="code-container">
                 <pre><code>
   sudo apt install git
 
-  sudo apt install maven
+  sudo apt install maven -y
                     
-  sudo apt install docker.io   
+  sudo apt install docker.io -y
                 </code></pre>
             </div>
             <h3>Setup SonarQube server</h3><br>
@@ -269,9 +275,12 @@ and reducing feedback time between developers and testers.</p>
             <img src="assets/images/project/img_p2_5.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
             <h3>integrate SonarQube to the Jenkins Pipeline</h3><br>
             <strong>Install Jenkins Plugin -</strong> SonarQube Scanner<br>
-            <strong>Global configuration -</strong> Dashboard --> Manage Jenkins --> System<br>
-            <strong>Add Token </strong><br>Get token from sonar, go to My account --> Security -->enter token name and generate token <br> In Jenkins add authorization token kind -Secret text, give any id and discription<br>
+            <strong>Add SonarQube in Jenkins global tool configuration -</strong>Dashboard --> Manage Jenkins --> tools --> SonarQube Scanner(select4.7 Version)<br>
             <img src="assets/images/project/img_p2_6.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            <strong>Jenkins Global configuration -</strong> Dashboard --> Manage Jenkins --> System --> add url http://pub_IP:80<br>
+            <strong>Add Token </strong><br>Get token from sonar, go to My account --> Security -->enter token name and generate token <br> In Jenkins add authorization token kind -Secret text, give any id and discription<br>
+            <img src="assets/images/project/img_p2_7.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            <img src="assets/images/project/img_p2_8.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
             Write pipeline stage for SonarQube as shown blow<br>
             <div class="code-container">
                 <pre><code>
@@ -294,6 +303,35 @@ stage('Sonar Analysis') {
 }
                 </code></pre>
             </div>
+            <img src="assets/images/project/img_p2_9.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            <img src="assets/images/project/img_p2_10.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            <h3>Setup SonarQube Quality Gates</h3><br>
+            SonarQube Quality Gates are a set of conditions that a codebase must meet before being considered acceptable for release or further development. These conditions are used to enforce code quality standards by automatically analyzing the code for potential issues and ensuring that it meets specific criteria before moving forward in the development process.<br>
+            <br>SonarQube UI --> Click on quality gates --> Create --> Add "Bug" threshold as 60  <br><br>
+            <img src="assets/images/project/img_p2_11.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            To link the quality gate to project<br>
+            go to project ->project settings->select the quality gates<br><br>
+
+            <img src="assets/images/project/img_p2_12.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            SonarQube server will send the information of the quality check through webhook<br>
+            Click on project settings --> webhooks --> url: http://jnkn_pvt_IP:8080/<strong>sonarqube-webhook</strong> 
+            <img src="assets/images/project/img_p2_13.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            Add below stage to the pipeline.
+            <div class="code-container">
+                <pre><code>
+stage("Quality Gate") {
+    steps {
+        timeout(time: 1, unit: 'HOURS') {
+            // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+            // true = set pipeline to UNSTABLE, false = don't
+            waitForQualityGate abortPipeline: true
+        }
+    }
+}            
+                </code></pre>
+            </div>
+            <img src="assets/images/project/img_p2_14.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+            <img src="assets/images/project/img_p2_15.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
 
             </p>
             </div>
