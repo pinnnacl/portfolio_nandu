@@ -213,10 +213,10 @@ and reducing feedback time between developers and testers.</p>
             </div>
             <div class="project-description">
                 <h2>My Role</h2><br>
-                <p>Create an EC2 instance with below properties<br>
-                    <strong>Jenkins</strong> t2.medium 8Gb RAM<br>
-                    <strong>SonarQube</strong> t2.medium 8Gb RAM
-                    <strong>Nexus3</strong> t2.medium 8Gb RAM</p><br>
+                <p>Create an EC2 instance with below properties<br><br>
+                    <strong>Jenkins</strong> t2.medium | 8Gb RAM | Ubuntu 22.04 LTS<br>
+                    <strong>SonarQube</strong> t2.medium | 8Gb RAM  | Ubuntu 22.04 LTS<br>
+                    <strong>Nexus3</strong> t2.medium | 10Gb RAM  | Cento OS 9/7</p><br>
                 <h3>Setup Jenkins server</h3><br>
                 <p>Install Java as a dependency<br>Visit <a href="https://www.jenkins.io/doc" target="_blank" style="color: #ff5733; font-weight: bold; text-decoration: none; background-color: #e0e0e0; padding: 5px 10px; border-radius: 5px;">www.jenkins.io</a> to install Jenkins<br></p>
             </div>
@@ -260,15 +260,22 @@ and reducing feedback time between developers and testers.</p>
                 Visit the <a href="https://github.com/pinnnacl/Installation_guide/blob/main/SonarQube_setup" target="_blank" style="color: #ff5733; font-weight: bold; text-decoration: none; background-color: #e0e0e0; padding: 5px 10px; border-radius: 5px;">LINK</a>
                 to get installtion procedure <br>
                 <img src="assets/images/project/img_p2_2.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br>
+                
                 <h3>Setup Nexus server</h3><br>
                 <strong>Install Java:</strong> Ensure Java is installed (sudo apt-get install openjdk-11-jdk).<br>
                <strong>Create Nexus User: </strong> Create a new user (sudo adduser nexus) and grant permissions.<br>
                <strong>Configure Nexus:</strong> Edit the Nexus configuration file to specify the installation directory:<br>
                <strong>Start Nexus: </strong> sudo -u nexus /opt/nexus-latest/bin/nexus start<br>
                <strong>Access Nexus Repository Manager: </strong> Open a web browser and navigate to http://your-server-ip:8081. You should see the Nexus Repository Manager web interface.<br><br>
-               Visit the <a href="https://github.com/pinnnacl/Installation_guide/blob/main/nexus_setup" target="_blank" style="color: #ff5733; font-weight: bold; text-decoration: none; background-color: #e0e0e0; padding: 5px 10px; border-radius: 5px;">LINK</a> to get installtion procedure<br>
-               <img src="assets/images/project/img_p2_3.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br>
-            <h3>Create Pipeline</h3><br>
+               Visit the <a href="https://github.com/pinnnacl/Installation_guide/blob/main/nexus_setup" target="_blank" style="color: #ff5733; font-weight: bold; text-decoration: none; background-color: #e0e0e0; padding: 5px 10px; border-radius: 5px;">github</a> to get installtion procedure or refer: <a href="https://dev.to/mesadhan/install-nexus-repository-manager-linux-in-centos7-deploy-and-use-jar-4bge" target="_blank" style="color: #ff5733; font-weight: bold; text-decoration: none; background-color: #e0e0e0; padding: 5px 10px; border-radius: 5px;">link</a><br><br>
+               <img src="assets/images/project/img_p2_15.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+               <strong>Create respository</strong><br><br>
+               Go to setting --> Repository --> Create repositories --> Maven(hosted) to store artifact<br><br>
+   
+               <img src="assets/images/project/img_p2_17.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
+               <img src="assets/images/project/img_p2_18.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>    
+
+               <h3>Create Pipeline</h3><br>
             Create a Job in jenkis UI and Build the pipeline
             <img src="assets/images/project/img_p2_4.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br>
             
@@ -331,7 +338,8 @@ stage("Quality Gate") {
                 </code></pre>
             </div>
             <img src="assets/images/project/img_p2_14.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
-            <img src="assets/images/project/img_p2_15.jpg" alt="Project Image" style="display: block; margin: 0 auto;"><br><br>
-
-            </p>
+            <h3>integrate NEXUS to the Jenkins Pipeline</h3><br>
+            <strong>Setup Jenkins credentials -</strong> Jenkins --> dashboard --> manage Jenkins --> manage credetntials
+            
+        </p>
             </div>
