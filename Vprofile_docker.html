@@ -250,6 +250,8 @@ and reducing feedback time between developers and testers.</p>
   sudo apt install maven -y
                     
   sudo apt install docker.io -y
+
+  sudo usermod -aG docker jenkins  #restart Jenkins
                 </code></pre>
             </div>
 
@@ -262,31 +264,33 @@ and reducing feedback time between developers and testers.</p>
             <img src="assets/images/project/img_p3_1.jpg" alt="Project Image" style="display: block; margin: auto;">
             <br><h3>Create ECR private repository</h3><br>
             Navigate to AWS Management consol, search for "ECR". Click on create repository.<br><br>
-            <img src="assets/images/project/img_p3_2.jpg" alt="Project Image" style="display: block; margin: auto;">
+            <img src="assets/images/project/img_p3_2.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br>
 
-            <h3>Jenkins pipelins</h3><br><br>
+            <h3>Create Jenkins Pipeline</h3><br><br>
             <strong>Install below Jenkins plugins:</strong>
             <ul style="margin-left: 80px;">
-                <li>Docker plugin</li>   
+                <li>Docker pipline</li>   
                 <li>Amazone ECR</li>
                 <li>Amazone Web Service SDK :: ALL</li>
-            </ul><br>
-            <img src="assets/images/project/img_p3_3.jpg" alt="Project Image" style="display: block; margin: auto;">
+            </ul><br><br>
+            <img src="assets/images/project/img_p3_3.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
+            Add aws credential on Jenkins<br><br>
+            Dashboard --> Manage Jenkins --> Credentials --> System --> Global credentials (unrestricted)<br><br><br><br>
+            <img src="assets/images/project/img_p3_4.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
 
-            Write Jenkins pipeline as shown below:
+            Write Jenkins pipeline as shown below:<br><br><br><br>
             <div class="code-container">
                 <pre><code>
 pipeline {
     agent any
     tools {
         maven "MAVEN3"
-        jdk "OracleJDK8"
     }
-                    
+                                        
     environment {
-        registryCredential = 'ecr:us-east-2:awscreds'
-        appRegistry = "951401132355.dkr.ecr.us-east-2.amazonaws.com/vprofileappimg"
-        vprofileRegistry = "https://951401132355.dkr.ecr.us-east-2.amazonaws.com"
+        registryCredential = 'ecr:us-east-1:aws_cred'
+        appRegistry = "381492291062.dkr.ecr.us-east-1.amazonaws.com/vprofile_docker"
+        vprofileRegistry = "https://381492291062.dkr.ecr.us-east-1.amazonaws.com"
     }
     stages {
         stage('Fetch code'){
@@ -294,13 +298,13 @@ pipeline {
                 git branch: 'docker', url: 'https://github.com/devopshydclub/vprofile-project.git'
             }
         }
-                    
+                                        
         stage('Test'){
             steps {
                 sh 'mvn test'
             }
         }
-                    
+                                        
         stage ('CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
                 sh 'mvn checkstyle:checkstyle'
@@ -311,46 +315,15 @@ pipeline {
                 }
             }
         }
-                    
-        stage('build && SonarQube analysis') {
-            environment {
-                scannerHome = tool 'sonar4.7'
-            }
-            steps {
-                withSonarQubeEnv('sonar') {
-                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
-                    -Dsonar.projectName=vprofile-repo \
-                    -Dsonar.projectVersion=1.0 \
-                    -Dsonar.sources=src/ \
-                    -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
-                    -Dsonar.junit.reportsPath=target/surefire-reports/ \
-                    -Dsonar.jacoco.reportsPath=target/jacoco.exec \
-                    -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
-                }
-            }
-        }
-                    
-        stage("Quality Gate") {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-                // true = set pipeline to UNSTABLE, false = don't
-                waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-                    
+                                               
         stage('Build App Image') {
-            steps {
-                           
+            steps {                                
                 script {
                     dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER", "./Docker-files/app/multistage/")
-                }
-                    
-            }
-                        
+                }                          
+            }                                
         }
-                    
+                                        
         stage('Upload App Image') {
             steps{
                 script {
@@ -361,10 +334,10 @@ pipeline {
                 }
             }
         }
-                    
     }
 }
                 </code></pre>
-            </div>
+            </div><br><br><br><br>
+            <img src="assets/images/project/img_p3_5.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
            </p>    
     </div>
