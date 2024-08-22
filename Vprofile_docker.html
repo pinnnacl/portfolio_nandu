@@ -340,7 +340,27 @@ pipeline {
             </div><br><br><br><br>
             <img src="assets/images/project/img_p3_5.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
             <h3>Create ECS Cluster, task definition  and ECS service</h3><br>
-           </p>    
+            <strong>Creat cluster:</strong><br>
+            <ul style="margin-left: 80px;">
+                <li>Cluster name: vprofile_project<br></li>
+                <li>Monitoring – optional: Use container insights  (ECS – cloudwatch)</li>
+            </ul><br><br><br>
+            <img src="assets/images/project/img_p3_7.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
+            <strong>Task definition: make the below changes</strong><br>
+            <ul style="margin-left: 80px;">
+                <li>name: vprofileapptask<br></li>
+                <li>memmory 2GB</li>
+                <li><strong> Container – 1</strong></li>
+                <li>Name: vproapp<br></li>
+                <li>Name: vproapp</li>
+                <li>port 8080 (tomcat)</li>
+                <li>tag: Name  vprofileapptask</li>
+            </ul><br><br><br>
+
+            <img src="assets/images/project/img_p3_8.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br><br><br><br>
+            <strong>Create a Role with "CloudwatchLogsfullaccess" previllage</strong><br>
+            task defention --> Task execution role --> ecsTaskExecutionRole --> add permission --> attach policies --> CloudwatchLogsfullaccess
+        </p>    
     </div>
 
 
