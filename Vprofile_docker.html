@@ -358,8 +358,58 @@ pipeline {
             </ul><br><br><br>
 
             <img src="assets/images/project/img_p3_8.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br><br><br><br>
-            <strong>Create a Role with "CloudwatchLogsfullaccess" previllage</strong><br>
-            task defention --> Task execution role --> ecsTaskExecutionRole --> add permission --> attach policies --> CloudwatchLogsfullaccess
+            <strong>Create a Role with "CloudwatchLogsfullaccess" previllags:</strong><br><br>
+            task defention --> Task execution role --> ecsTaskExecutionRole --> add permission --> attach policies --> CloudwatchLogsfullaccess<br><br><br><br>
+            <img src="assets/images/project/img_p3_9.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
+            <strong>Create Service</strong><br><br>
+            <ul style="margin-left: 80px;">
+                <li>Application type: Service(tomcat running on background)<br></li>
+                <li>family – vprofileapptask</li>
+                <li>service name: vprofileappsvc<br></li>
+                <li>service name: vprofileappsvc</li>
+                <li>Deployment failiure detection – uncheck</li>
+                <li><strong> Networking</strong></li>
+                <li>Create a new security group</li>
+                <li>http:80 0.0.0.0/0, ::0</li>
+                <li>custom port:8080  0.0.0.0/0, ::0</li>
+                <li><strong>Load Balancer</strong></li>
+                <li>type: application load Balancer</li>
+                <li>name: vproappelbecs</li>
+                <li>container to LB 8080 : 8080</li>
+                <li>listner 80</li>
+                <li>target group name: vproecstg</li>
+                <li>helthcheck: /login (vprofile app is available in this path)</li>
+            </ul><br><br><br>
+            <img src="assets/images/project/img_p3_10.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
+            <img src="assets/images/project/img_p3_11.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
+            <img src="assets/images/project/img_p3_12.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
+            It will take 5 to 10mins to deploy the task<br><br>
+            Cluster --> Tasks<br><br> 
+            To check Logs : Cluster --> Logs<br>
+            To get the DNS endpoint: Amazon Elastic Container Service --> Clusters --> vprofile_project --> Services --> vprofileappsvc --> Configuration
+            <img src="assets/images/project/img_p3_13.jpg" alt="Project Image" style="display: block; margin: auto;"><br><br><br><br>
+
+            <h3>Write pipeline script to deploy image on ECS</h3><br>
+            <div class="code-container">
+                <pre><code>
+environment {
+    registryCredential = 'ecr:us-east-2:awscreds'
+    appRegistry = "951401132355.dkr.ecr.us-east-2.amazonaws.com/vprofileappimg"
+    vprofileRegistry = "https://951401132355.dkr.ecr.us-east-2.amazonaws.com"
+    cluster = "vprofile"
+    service = "vprofileappsvc"
+}
+
+
+stage('Deploy to ecs') {
+    steps {
+        withAWS(credentials: 'awscreds', region: 'us-east-2') {
+        sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+        }
+    }
+}
+</code></pre>
+</div><br><br><br><br>
         </p>    
     </div>
 
