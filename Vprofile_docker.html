@@ -194,11 +194,9 @@ code {
             </div>
             <div class="project-details">
                 <h2>Project Overview</h2><br>
-                <p>When a developer pushes updated code to the Git master branch, the CI/CD pipeline automatically initiates the following processes: code checkout, compilation, testing, packaging, and containerization. The code undergoes testing with SonarQube, where a quality gate is configured with a bug threshold of 60. If the application does not pass this quality gate, the issue is flagged and communicated back to the developer. Once the application successfully passes all tests, it is uploaded to Nexus for further use.</p>
+                <p>When a developer pushes updated code to the Git master branch, the CI/CD pipeline automatically initiates the following processes: code checkout, compilation, testing, packaging, and containerization. The code undergoes testing with SonarQube, where a quality gate is configured with a bug threshold of 60. If the application does not pass this quality gate, the issue is flagged and communicated back to the developer. Once the application successfully passes all tests, it is containerized using Docker and pushed to Amazon ECR (Elastic Container Registry). From there, it is deployed to Amazon ECS (Elastic Container Service) for production use.</p>
 				
-				<p>The company’s goal is to deliver the product updates frequently to production automatically 
-with High quality & Reliability. They also want to accelerate software delivery speed, quality 
-and reducing feedback time between developers and testers.</p>
+				<p>The company’s goal is to deliver product updates frequently to production automatically with high quality and reliability. They also aim to accelerate software delivery speed, enhance quality, and reduce feedback time between developers and testers.</p>
             </div>
             <div class="project-description">
                 <h2>Technologies Used</h2><br>
